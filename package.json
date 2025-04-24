@@ -1,0 +1,32 @@
+{
+  "name": "goodbye-usestate",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ayerest/goodbye-usestate.git",
+  "author": "ayerest <irisiseve@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@tanstack/react-query": "^5.74.4",
+    "@types/react": "^19.1.2",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-scripts": "^5.0.1",
+    "typescript": "^5.8.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
