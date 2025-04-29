@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { delay, fetchCount } from './fetchCount.ts';
+import React, { useState } from 'react';
 import '../App.css';
 
 const Counter1 = () => {
@@ -115,51 +114,10 @@ const Counter7 = () => {
   )
 }
 
-// TODO: incorporate url state? discriminated union
-const Counter8 = () => {
-  const [count, setCount] = useState<number>(0);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<Error>();
-
-  useEffect(() => {
-    let didCancel = false;
-    setLoading(true)
-    if (!didCancel) {
-      delay(2000, fetchCount).then(() => {
-        setCount(50);
-      }).catch((err) => {
-        setError(err);
-      }).finally(() => {
-        setLoading(false);
-      })
-    }
-    return () => {
-      didCancel = true;
-    }
-  }, [setCount, setError, setLoading])
-
-  const handleIncreaseCount = () => {
-    setCount((prevState) => prevState + 1);
-  }
-
-
-  return (
-    <>
-    <div className='container'>
-      {loading ? <h2>LOADING....</h2> : null}
-      {error ? error.message : null}
-      <h2>The count is: {count}</h2>
-      <button type="button" onClick={handleIncreaseCount}>Increase count</button>
-    </div>
-    </>
-  )
-}
-
 // export default Counter1;
 // export default Counter2;
 // export default Counter3;
 // export default Counter4;
 // export default Counter5;
 // export default Counter6;
-// export default Counter7;
-export default Counter8;
+export default Counter7;
