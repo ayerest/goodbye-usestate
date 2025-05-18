@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { fetchTodos, TodoItem } from './fetchTodos.ts';
 import Loading from './Loading.tsx';
 import ErrorMessage from './ErrorMessage.tsx';
+import useTodos from './useTodos.ts';
 
 const Todo1 = () => {
   const [todos, setTodos] = useState<Array<TodoItem>>();
@@ -14,7 +15,9 @@ const Todo1 = () => {
     if (!didCancel) {
      fetchTodos().then((data) => {
         setTodos(data);
+        // setError(undefined);
       }).catch((err) => {
+        // setTodos(undefined);
         setError(err);
       }).finally(() => {
         setLoading(false);
@@ -85,5 +88,26 @@ const Todo2 = () => {
   )
 }
 
+const Todo3 = () => {
+  const { data: todos = [], error, isError, isFetching } = useTodos();
+
+  return (
+    <>
+    {isFetching ? <Loading /> : null}
+    {isError ? <ErrorMessage error={error} /> : null}
+    {todos.length > 0 ?
+      <ul>
+      {todos.map((todo) => {
+        return (
+          <li key={todo.id}>{todo.name}</li>
+        )
+      })}
+      </ul> : null
+    }
+    </>
+  )
+}
+
 export default Todo1;
 // export default Todo2;
+// export default Todo3;

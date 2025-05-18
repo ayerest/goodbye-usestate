@@ -12,7 +12,12 @@ export const delay = async (delay = 1000, callback = () => {}) => {
 }
 
 export const fetchTodos = async (): Promise<Array<TodoItem>> => {
-  await delay(3000, () => {});
+  await delay(2000, () => {});
+  const shouldThrowError = Math.random() * 100 > 65;
+  console.log(shouldThrowError)
+  if (shouldThrowError) {
+    throw new Error('Error loading TODOs!!')
+  }
   return [
     {id: 1, name: 'Create demos'},
     {id: 2, name: 'Finish powerpoint'}
