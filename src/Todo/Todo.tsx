@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { fetchTodos, TodoItem } from './fetchTodos.ts';
 import Loading from './Loading.tsx';
 import ErrorMessage from './ErrorMessage.tsx';
@@ -108,6 +108,25 @@ const Todo3 = () => {
   )
 }
 
-export default Todo1;
+// server component example
+const Todo4 = async () => {
+  const todos = await fetchTodos();
+
+  return (
+    <Suspense fallback={<Loading />}>
+    {todos.length > 0 ?
+      <ul>
+      {todos.map((todo) => {
+        return (
+          <li key={todo.id}>{todo.name}</li>
+        )
+      })}
+      </ul> : null
+    }
+    </Suspense>
+  )
+}
+
+// export default Todo1;
 // export default Todo2;
-// export default Todo3;
+export default Todo3;
