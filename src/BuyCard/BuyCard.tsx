@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SelectDownloadMethod from './SelectMethodStep.tsx';
 import InitiateDownload from './DownloadStep.tsx';
 import ConfirmDownload from './ConfirmDownloadStep.tsx';
@@ -10,6 +10,10 @@ const BuyCard1 = () => {
   const [selectDownloadMethodStep, setSelectMethodStep] = useState(false);
   const [confirmDownloadStep, setConfirmDownloadStep] = useState(false);
   const [downloadCompleteStep, setDownloadCompleteStep] = useState(false);
+
+  useEffect(() => {
+    console.log("rendering");
+  })
 
   const handleGoToSelectMethodStep = () => {
     setSelectMethodStep(true);

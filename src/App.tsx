@@ -11,9 +11,9 @@ const App = () => {
   return (
     <div>
       <QueryClientProvider client={queryClient}>
-      {/* <Counter /> */}
+      <Counter />
       {/* <BuyCard /> */}
-      <Todo />
+      {/* <Todo /> */}
       <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </div>
