@@ -1,5 +1,12 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
+import z from 'zod';
 import '../App.css';
+
+const Profile = z.object({
+  name: z.string(),
+  favoriteColor: z.string(),
+  favoriteMovie: z.string(),
+})
 
 const ProfileForm1 = () => {
   const [name, setName] = useState('');
@@ -12,7 +19,8 @@ const ProfileForm1 = () => {
       favoriteColor,
       favoriteMovie
     }
-    console.log(formBody, "Form body for request")
+    const data = Profile.parse(formBody);
+    console.log(data, "Form body for request")
   }
   return (
     <div >
@@ -39,7 +47,8 @@ const ProfileForm2 = () => {
   const handleSubmitForm = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    console.log("Form data: ", Object.fromEntries(formData))
+    const data = Profile.parse(Object.fromEntries(formData));
+    console.log("Form data here: ", data)
   }
   return (
     <div >
