@@ -13,10 +13,10 @@ const App = () => {
   return (
     <div>
       <QueryClientProvider client={queryClient}>
-      {/* <Counter /> */}
+      <Counter />
       {/* <BuyCard /> */}
       {/* <Todo /> */}
-      <ProfileForm />
+      {/* <ProfileForm /> */}
       <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </div>

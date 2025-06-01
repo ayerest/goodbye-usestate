@@ -12,7 +12,7 @@ const BuyCard1 = () => {
   const [downloadCompleteStep, setDownloadCompleteStep] = useState(false);
 
   useEffect(() => {
-    console.log("rendering");
+    console.log("rendering buycard");
   })
 
   const handleGoToSelectMethodStep = () => {
