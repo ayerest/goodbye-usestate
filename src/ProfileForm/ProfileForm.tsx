@@ -23,8 +23,8 @@ const ProfileForm1 = () => {
     console.log(data, "Form body for request")
   }
   return (
-    <div >
-    <form action={handleSubmitForm} className="formContainer">
+    <div className="formContainer">
+    <form onSubmit={handleSubmitForm} className="form" >
       <label className="label">
         Name
         <input type="text" onChange={(e) => setName(e.target.value)} value={name} />
@@ -51,8 +51,8 @@ const ProfileForm2 = () => {
     console.log("Form data here: ", data)
   }
   return (
-    <div >
-    <form onSubmit={handleSubmitForm} className="formContainer">
+    <div className="formContainer">
+    <form onSubmit={handleSubmitForm} className="form" >
       <label htmlFor="name" className="label">
         Name
         <input type="text" name="name" id="name" />
@@ -71,5 +71,5 @@ const ProfileForm2 = () => {
   )
 }
 
-// export default ProfileForm1;
-export default ProfileForm2;
+export default ProfileForm1;
+// export default ProfileForm2;

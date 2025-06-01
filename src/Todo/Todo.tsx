@@ -30,18 +30,18 @@ const Todo1 = () => {
 
   return (
     <>
-    {loading ? <Loading /> : null}
-    {error ? <ErrorMessage error={error} /> : null}
-    {todos ? 
-      <ul>
-        {todos.map((todo) => {
-          return (
-            <li key={todo.id}>{todo.name}</li> 
-          )
-        })}
-      </ul> 
-      : null
-    }
+      {loading ? <Loading /> : null}
+      {error ? <ErrorMessage error={error} /> : null}
+      {todos ? 
+        <ul>
+          {todos.map((todo) => {
+            return (
+              <li key={todo.id}>{todo.name}</li> 
+            )
+          })}
+        </ul> 
+        : null
+      }
     </>
   )
 }
@@ -50,7 +50,7 @@ type DataState =
   | { status: 'idle' }
   | { status: 'loading' }
   | { status: 'error', error: string }
-  | { status: 'success', data: Array<TodoItem> } 
+  | { status: 'success', todos: Array<TodoItem> } 
 
 const Todo2 = () => {
   const [data, setData] = useState<DataState>({ status: 'idle'});
@@ -60,7 +60,7 @@ const Todo2 = () => {
     setData({ status: 'loading'})
     if (!didCancel) {
      fetchTodos().then((data) => {
-        setData({ status: 'success', data});
+        setData({ status: 'success', todos: data});
       }).catch((err) => {
         setData({ status: 'error', error: err});
       })
@@ -72,18 +72,18 @@ const Todo2 = () => {
 
   return (
     <>
-    {data.status === 'loading' ? <Loading /> : null}
-    {data.status === 'error'  ? <ErrorMessage error={data.error} /> : null}
-    {data.status === 'success' ? 
-      <ul>
-        {data.data.map((todo) => {
-          return (
-            <li key={todo.id}>{todo.name}</li> 
-          )
-        })}
-      </ul> 
-      : null
-    }
+      {data.status === 'loading' ? <Loading /> : null}
+      {data.status === 'error'  ? <ErrorMessage error={data.error} /> : null}
+      {data.status === 'success' ? 
+        <ul>
+          {data.todos.map((todo) => {
+            return (
+              <li key={todo.id}>{todo.name}</li> 
+            )
+          })}
+        </ul> 
+        : null
+      }
     </>
   )
 }
@@ -93,17 +93,17 @@ const Todo3 = () => {
 
   return (
     <>
-    {isFetching ? <Loading /> : null}
-    {isError ? <ErrorMessage error={error} /> : null}
-    {todos.length > 0 ?
-      <ul>
-      {todos.map((todo) => {
-        return (
-          <li key={todo.id}>{todo.name}</li>
-        )
-      })}
-      </ul> : null
-    }
+      {isFetching ? <Loading /> : null}
+      {isError ? <ErrorMessage error={error} /> : null}
+      {todos.length > 0 ?
+        <ul>
+        {todos.map((todo) => {
+          return (
+            <li key={todo.id}>{todo.name}</li>
+          )
+        })}
+        </ul> : null
+      }
     </>
   )
 }
@@ -127,6 +127,6 @@ const Todo4 = async () => {
   )
 }
 
-// export default Todo1;
+export default Todo1;
 // export default Todo2;
-export default Todo3;
+// export default Todo3;
