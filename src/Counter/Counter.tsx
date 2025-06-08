@@ -6,9 +6,9 @@ import CounterRerender from './CounterRerender.tsx';
 const Counter = () => {
   return (
     <>
-      {/* <CounterClosure /> */}
+      <CounterClosure />
       {/* <CounterSetMap /> */}
-      <CounterRerender />
+      {/* <CounterRerender /> */}
     </>
   )
 }
